@@ -80,6 +80,7 @@ jobs:
     - name: ping VM
       run: |
         cd ansible
+        chmod 600 ./id_rsa
         ansible -m ping -vvv all
       env:        
         #ANSIBLE_HOST_KEY_CHECKING: False  # Disable host key checking for simplicity
