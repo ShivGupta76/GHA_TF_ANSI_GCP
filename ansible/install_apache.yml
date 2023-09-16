@@ -1,6 +1,6 @@
 ---
     - name: Install Apache and Set Index Page
-      hosts: all
+      hosts: webservers
       become: true # run it as a sudo
     
       tasks:

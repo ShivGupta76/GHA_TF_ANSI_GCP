@@ -80,32 +80,20 @@ jobs:
     - name: ping VM
       run: |
         cd ansible
-        ansible -i inventory.ini -m ping -vvv all
+        ansible -m ping -vvv all
       env:        
-        ANSIBLE_HOST_KEY_CHECKING: False  # Disable host key checking for simplicity       
-        ANSIBLE_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-        ANSIBLE_SSH_USER: ${{ secrets.YOUR_SSH_USERNAME }}
+        #ANSIBLE_HOST_KEY_CHECKING: False  # Disable host key checking for simplicity
+        ANSIBLE_CONFIG: ./ansible.cfg      
+        # ANSIBLE_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+        # ANSIBLE_SSH_USER: ${{ secrets.YOUR_SSH_USERNAME }}
 
     - name: Run Ansible Playbook
       run: |
-        cd ansible  # Change to the Ansible directory
-        ansible-playbook -i inventory.ini install_apache.yml    
+        cd ansible  
+        ansible-playbook install_apache.yml    
       env:        
-        ANSIBLE_HOST_KEY_CHECKING: False  # Disable host key checking for simplicity       
-        ANSIBLE_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-        ANSIBLE_SSH_USER: ${{ secrets.YOUR_SSH_USERNAME }}
-    #   with:
-    #     # Required, playbook filepath
-    #     playbook: deploy.yml
-    #     # Optional, directory where playbooks live
-    #     directory: ./
-    #     # Optional, SSH private key
-    #     key: ${{secrets.SSH_PRIVATE_KEY}}
-    #     # Optional, literal inventory file contents
-    #     inventory: |
-    #         [all]
-    #         example.com
-        
-    #         [group1]
-    #         example.com
+        #ANSIBLE_HOST_KEY_CHECKING: False  # Disable host key checking for simplicity
+        ANSIBLE_CONFIG: ./ansible.cfg       
+        # ANSIBLE_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+        # ANSIBLE_SSH_USER: ${{ secrets.YOUR_SSH_USERNAME }}    
           
