@@ -78,7 +78,9 @@ jobs:
         sudo apt-get install -y ansible    
       
     - name: ping VM
-      run: ansible -i inventory.ini -m ping -vvv all
+      run: |
+        cd ansible
+        ansible -i inventory.ini -m ping -vvv all
       env:        
         ANSIBLE_HOST_KEY_CHECKING: False  # Disable host key checking for simplicity       
         ANSIBLE_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
@@ -87,7 +89,7 @@ jobs:
     - name: Run Ansible Playbook
       run: |
         cd ansible  # Change to the Ansible directory
-        ansible-playbook -i inventory.ini install_apache.yml all      
+        ansible-playbook -i inventory.ini install_apache.yml    
       env:        
         ANSIBLE_HOST_KEY_CHECKING: False  # Disable host key checking for simplicity       
         ANSIBLE_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
