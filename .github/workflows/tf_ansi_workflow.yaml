@@ -75,7 +75,7 @@ jobs:
     - name: Run Ansible Playbook
       run: |
         cd ansible  # Change to the Ansible directory
-        ansible-playbook -i "my-tf-ansi-vm1" install_apache.yml        
+        ansible-playbook -i "34.125.184.18," install_apache.yml        
       env:
         YOUR_SSH_USERNAME: ansible  # Replace with your SSH username
         ANSIBLE_HOST_KEY_CHECKING: False  # Disable host key checking for simplicity       
