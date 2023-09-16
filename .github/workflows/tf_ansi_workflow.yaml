@@ -76,8 +76,7 @@ jobs:
       run: |
         cd ansible  # Change to the Ansible directory
         ansible-playbook -i "34.125.184.18," install_apache.yml        
-      env:
-        YOUR_SSH_USERNAME: ansible  # Replace with your SSH username
+      env:        
         ANSIBLE_HOST_KEY_CHECKING: False  # Disable host key checking for simplicity       
         ANSIBLE_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
         ANSIBLE_SSH_USER: ${{ secrets.YOUR_SSH_USERNAME }}
