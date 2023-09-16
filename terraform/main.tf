@@ -15,7 +15,7 @@ terraform {
     bucket = "tf-states-demo" # create gs://tf-states-demo
     prefix = "tf_ansi/state"  # create folders "terraform/state" --> gs://tf-states-demo/terraform/state/
     ######## On run "Terraform init", TF will put default state at gs://tf-states-demo/terraform/state/default.tfstate 
-    credentials = "zinc-arc-396916-9d8a70ea2239.json"
+    #credentials = "zinc-arc-396916-9d8a70ea2239.json"
   }
 }
 
@@ -44,7 +44,7 @@ locals {
 
 provider "google" {
   project     = local.project
-  credentials = file(var.credentials_file)
+  #credentials = file(var.credentials_file)
   region      = var.region
   zone        = local.instance_zone
 }
