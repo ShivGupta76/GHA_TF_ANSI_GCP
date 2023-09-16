@@ -82,5 +82,5 @@ resource "google_compute_instance" "my-tf-ansi" {
 
 # Output the public IP address of the created instance
 output "public_ip" {
-  value = google_compute_instance.my-tf-ansi.network_interface.0.access_config.0.assigned_nat_ip
+  value = google_compute_instance.my-tf-ansi.network_interface.0.access_config.0.nat_ip
 }
