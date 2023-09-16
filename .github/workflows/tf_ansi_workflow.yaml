@@ -66,13 +66,19 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
 
+    - name: Check if Ansible is installed
+      id: ansible_check
+      run: ansible --version || echo "Ansible not found"
+      continue-on-error: true
+
     - name: Install Ansible
+      if: steps.ansible_check.outcome == 'failure'
       run: |
         sudo apt-get update
-        sudo apt-get install -y ansible
+        sudo apt-get install -y ansible    
       
     - name: ping VM
-      run: ansible -i inventory.ini -m ping -vvv
+      run: ansible -i inventory.ini -m ping -vvv all
       env:        
         ANSIBLE_HOST_KEY_CHECKING: False  # Disable host key checking for simplicity       
         ANSIBLE_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
@@ -81,7 +87,7 @@ jobs:
     - name: Run Ansible Playbook
       run: |
         cd ansible  # Change to the Ansible directory
-        ansible-playbook -i inventory.ini install_apache.yml        
+        ansible-playbook -i inventory.ini install_apache.yml all      
       env:        
         ANSIBLE_HOST_KEY_CHECKING: False  # Disable host key checking for simplicity       
         ANSIBLE_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
