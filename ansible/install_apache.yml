@@ -1,13 +1,13 @@
 ---
     - name: Set permissions for id_rsa
-      hosts: localhost  # or specify the relevant host(s)
+      hosts: localhost  
       tasks:
         - name: Set permissions
           command: chmod 600 ./id_rsa
 
     - name: Install Apache and Set Index Page
       hosts: webservers
-      become: true # run it as a sudo
+      become: true 
     
       tasks:
         - name: Install Apache

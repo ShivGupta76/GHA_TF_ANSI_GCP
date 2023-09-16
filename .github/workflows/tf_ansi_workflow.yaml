@@ -92,9 +92,9 @@ jobs:
       run: |
         cd ansible  
         ansible-playbook install_apache.yml    
-      env:        
-        #ANSIBLE_HOST_KEY_CHECKING: False  # Disable host key checking for simplicity
-        ANSIBLE_CONFIG: ./ansible.cfg       
-        # ANSIBLE_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-        # ANSIBLE_SSH_USER: ${{ secrets.YOUR_SSH_USERNAME }}    
+    #   env:        
+    #     #ANSIBLE_HOST_KEY_CHECKING: False  # Disable host key checking for simplicity
+    #     ANSIBLE_CONFIG: ./ansible.cfg       
+    #     # ANSIBLE_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+    #     # ANSIBLE_SSH_USER: ${{ secrets.YOUR_SSH_USERNAME }}    
           
