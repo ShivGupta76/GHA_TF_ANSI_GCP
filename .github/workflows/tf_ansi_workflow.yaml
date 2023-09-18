@@ -1,5 +1,4 @@
-name: 'Terraform CI'
-
+name: 'CI-CD by Terraform-Ansible-GHA'
 on:
   push:
     branches:
@@ -18,7 +17,7 @@ on:
         type: string
         default: "main"
 jobs:
-  terraform:
+  provision-resources-byterraform:
     name: 'Terraform'
     runs-on: ubuntu-latest
 
@@ -66,7 +65,7 @@ jobs:
         terraform apply -auto-approve
       env:
         GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
-  ansible:
+  cfm-byansible:
     name: 'Ansible'
     runs-on: ubuntu-latest
     needs: terraform  # Make sure Ansible runs after Terraform
