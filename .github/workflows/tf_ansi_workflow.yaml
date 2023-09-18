@@ -68,7 +68,7 @@ jobs:
   cfm-byansible:
     name: 'Ansible'
     runs-on: ubuntu-latest
-    needs: terraform  # Make sure Ansible runs after Terraform
+    needs: provision-resources-byterraform  # Make sure Ansible runs after Terraform
 
     steps:
     - name: Checkout
